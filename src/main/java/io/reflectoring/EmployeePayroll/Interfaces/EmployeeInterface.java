@@ -1,9 +1,9 @@
-package io.reflectoring.EmployeePayroll.Services;
+package io.reflectoring.EmployeePayroll.Interfaces;
 
 import java.util.List;
 import io.reflectoring.EmployeePayroll.DTO.EmployeeDTO;
 
-public interface EmployeeService {
+public interface EmployeeInterface {
     EmployeeDTO createEmployee(EmployeeDTO employeeDTO);
     EmployeeDTO getEmployeeById(Long id);
     List<EmployeeDTO> getAllEmployees();
