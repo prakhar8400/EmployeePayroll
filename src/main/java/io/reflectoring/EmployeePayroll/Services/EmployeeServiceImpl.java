@@ -22,60 +22,85 @@ public class EmployeeServiceImpl implements EmployeeInterface {
 
     @Override
     public EmployeeDTO createEmployee(EmployeeDTO employeeDTO) {
-        log.info("Creating new employee: {}", employeeDTO);
-
-        Employee employee = convertToEntity(employeeDTO);
-        Employee savedEmployee = employeeRepository.save(employee);
-
-        return convertToDTO(savedEmployee);
+        try {
+            log.info("Creating new employee: {}", employeeDTO);
+            Employee employee = convertToEntity(employeeDTO);
+            Employee savedEmployee = employeeRepository.save(employee);
+            return convertToDTO(savedEmployee);
+        } catch (Exception e) {
+            log.error("Error creating employee: {}", e.getMessage());
+            throw new RuntimeException("Failed to create employee, please try again.");
+        }
     }
 
     @Override
     public EmployeeDTO getEmployeeById(Long id) {
-        log.info("Fetching employee with ID: {}", id);
-
-        Employee employee = employeeRepository.findById(id)
-                .orElseThrow(() -> new EmployeeNotFoundException("Employee not found with id: " + id));
-
-        return convertToDTO(employee);
+        try {
+            log.info("Fetching employee with ID: {}", id);
+            Employee employee = employeeRepository.findById(id)
+                    .orElseThrow(() -> new EmployeeNotFoundException("Employee not found with id: " + id));
+            return convertToDTO(employee);
+        } catch (EmployeeNotFoundException e) {
+            log.error("Employee not found: {}", e.getMessage());
+            throw e;
+        } catch (Exception e) {
+            log.error("Error fetching employee: {}", e.getMessage());
+            throw new RuntimeException("Failed to fetch employee, please try again.");
+        }
     }
 
     @Override
     public List<EmployeeDTO> getAllEmployees() {
-        log.info("Fetching all employees");
-
-        return employeeRepository.findAll().stream()
-                .map(this::convertToDTO)
-                .collect(Collectors.toList());
+        try {
+            log.info("Fetching all employees");
+            return employeeRepository.findAll().stream()
+                    .map(this::convertToDTO)
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            log.error("Error fetching employees: {}", e.getMessage());
+            throw new RuntimeException("Failed to fetch employees, please try again.");
+        }
     }
 
     @Transactional
     @Override
     public EmployeeDTO updateEmployee(Long id, EmployeeDTO employeeDTO) {
-        log.info("Updating employee with ID: {}", id);
+        try {
+            log.info("Updating employee with ID: {}", id);
+            Employee employee = employeeRepository.findById(id)
+                    .orElseThrow(() -> new EmployeeNotFoundException("Employee not found with id: " + id));
 
-        Employee employee = employeeRepository.findById(id)
-                .orElseThrow(() -> new EmployeeNotFoundException("Employee not found with id: " + id));
+            employee.setName(employeeDTO.getName());
+            employee.setEmail(employeeDTO.getEmail());
+            employee.setDepartment(employeeDTO.getDepartment());
+            employee.setSalary(employeeDTO.getSalary());
 
-        // Updating fields
-        employee.setName(employeeDTO.getName());
-        employee.setEmail(employeeDTO.getEmail());
-        employee.setDepartment(employeeDTO.getDepartment());
-        employee.setSalary(employeeDTO.getSalary());
-
-        Employee updatedEmployee = employeeRepository.save(employee);
-        return convertToDTO(updatedEmployee);
+            Employee updatedEmployee = employeeRepository.save(employee);
+            return convertToDTO(updatedEmployee);
+        } catch (EmployeeNotFoundException e) {
+            log.error("Employee not found: {}", e.getMessage());
+            throw e;
+        } catch (Exception e) {
+            log.error("Error updating employee: {}", e.getMessage());
+            throw new RuntimeException("Failed to update employee, please try again.");
+        }
     }
 
     @Transactional
     @Override
     public void deleteEmployee(Long id) {
-        log.info("Deleting employee with ID: {}", id);
-
-        Employee employee = employeeRepository.findById(id)
-                .orElseThrow(() -> new EmployeeNotFoundException("Employee not found with id: " + id));
-
-        employeeRepository.delete(employee);
+        try {
+            log.info("Deleting employee with ID: {}", id);
+            Employee employee = employeeRepository.findById(id)
+                    .orElseThrow(() -> new EmployeeNotFoundException("Employee not found with id: " + id));
+            employeeRepository.delete(employee);
+        } catch (EmployeeNotFoundException e) {
+            log.error("Employee not found: {}", e.getMessage());
+            throw e;
+        } catch (Exception e) {
+            log.error("Error deleting employee: {}", e.getMessage());
+            throw new RuntimeException("Failed to delete employee, please try again.");
+        }
     }
 
     // Utility methods for conversion
