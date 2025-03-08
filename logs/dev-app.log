@@ -1,0 +1,41 @@
+2025-03-08 11:47:50 - Starting EmployeePayrollApplication using Java 23.0.2 with PID 2064 (C:\Users\prakh\Downloads\EmployeePayroll\EmployeePayroll\target\classes started by prakh in C:\Users\prakh\Downloads\EmployeePayroll\EmployeePayroll)
+2025-03-08 11:47:50 - Running with Spring Boot v3.4.3, Spring v6.2.3
+2025-03-08 11:47:50 - The following 1 profile is active: "dev"
+2025-03-08 11:47:50 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-03-08 11:47:50 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-03-08 11:47:51 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-08 11:47:51 - Finished Spring Data repository scanning in 65 ms. Found 1 JPA repository interface.
+2025-03-08 11:47:52 - Tomcat initialized with port 8080 (http)
+2025-03-08 11:47:52 - Starting service [Tomcat]
+2025-03-08 11:47:52 - Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-08 11:47:52 - Initializing Spring embedded WebApplicationContext
+2025-03-08 11:47:52 - Root WebApplicationContext: initialization completed in 2367 ms
+2025-03-08 11:47:53 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-08 11:47:53 - HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-03-08 11:47:53 - HHH000026: Second-level cache disabled
+2025-03-08 11:47:53 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-08 11:47:53 - HikariPool-1 - Starting...
+2025-03-08 11:47:54 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@be3d320
+2025-03-08 11:47:54 - HikariPool-1 - Start completed.
+2025-03-08 11:47:54 - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-08 11:47:54 - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-03-08 11:47:54 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-08 11:47:55 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-08 11:47:55 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-08 11:47:55 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-08 11:47:56 - LiveReload server is running on port 35729
+2025-03-08 11:47:56 - Exposing 1 endpoint beneath base path '/actuator'
+2025-03-08 11:47:56 - Tomcat started on port 8080 (http) with context path '/'
+2025-03-08 11:47:56 - Started EmployeePayrollApplication in 6.727 seconds (process running for 7.337)
+2025-03-08 11:50:28 - Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-08 11:50:28 - Graceful shutdown complete
+2025-03-08 11:50:28 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-08 11:50:29 - HikariPool-1 - Shutdown initiated...
+2025-03-08 11:50:29 - HikariPool-1 - Shutdown completed.
